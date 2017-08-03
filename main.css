@@ -1,0 +1,58 @@
+/*
+background color: 	#B0C4DE
+output background color: #778899
+operator button color: #F08080
+operator button font color: #F5FFFA
+number button color: #E0FFFF
+click on number button color: #ADD8E6
+equal button color: #E6E6FA
+clear button color: #E6E6FA
+*/
+
+section {
+  width: 500px;
+  height: 700px;
+  background-color: #778899;
+  padding: 25px;
+}
+
+div {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  font-family: 'Gill Sans', Arial, sans-serif;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: none;
+  color: #708090;
+  font-size: 20px;
+}
+
+.number {
+  background-color: #E0FFFF;
+}
+
+.operator {
+  background-color: #F08080;
+  color: 	#F5FFFA;
+}
+
+#enter {
+  background-color: #E6E6FA;
+}
+
+#clear {
+  background-color: #E6E6FA;
+}
+
+
+p {
+  background-color: #B0C4DE;
+  color: #F5FFFA;
+  width: 340px;
+  height: 100px;
+  margin: 10px;
+}

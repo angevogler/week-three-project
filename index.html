@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
     <title>
       Calculator
     </title>
@@ -11,24 +12,60 @@
 
     <section>
       <div>
-        <button class="number" type="button">0</button>
-        <button class="number" type="button">.</button>
-        <button id="enter" type="button">=</button>
-        <button class="operator" type="button">+</button>
-        <button class="number" type="button">1</button>
-        <button class="number" type="button">2</button>
-        <button class="number" type="button">3</button>
-        <button class="operator" type="button">-</button>
-        <button class="number" type="button">4</button>
-        <button class="number" type="button">5</button>
-        <button class="number" type="button">6</button>
-        <button class="operator"type="button">x</button>
-        <button class="number" type="button">7</button>
-        <button class="number" type="button">8</button>
-        <button class="number" type="button">9</button>
-        <button class="operator" type="button">/</button>
-        <button id="clear" type="button">C</button>
-        <p>1+1=2</p>
+        <div id="viewer">
+          <p id="answers"></p>
+        </div>
+        <div>
+          <button class="btn" type="button" name="C" id="clr-btn">C</button>
+        </div>
+        <div>
+          <button class="btn operator" type="button" name="/" id="/">/</button>
+        </div>
+        <div>
+          <button class="btn number" type="button" name="9" id="9">9</button>
+        </div>
+        <div>
+          <button class="btn number " type="button" name="8" id="8">8</button>
+        </div>
+        <div>
+          <button class="btn number" type="button" name="7" id="7">7</button>
+        </div>
+        <div>
+          <button class="btn operator"type="button" name="x" id="*">x</button>
+        </div>
+        <div>
+          <button class="btn number" type="button" name="6" id="6">6</button>
+        </div>
+        <div>
+            <button class="btn number" type="button" name="5" id="5">5</button>
+        </div>
+        <div>
+            <button class="btn number" type="button" name="4" id="4">4</button>
+        </div>
+        <div>
+            <button class="btn operator" type="button" name="-" id="-">-</button>
+        </div>
+        <div>
+          <button class="btn number" type="button" name="3" id="3">3</button>
+        </div>
+        <div>
+            <button class="btn number" type="button" name="2" id="2">2</button>
+        </div>
+        <div>
+          <button class="btn number" type="button" name="1" id="1">1</button>
+        </div>
+        <div>
+          <button class="btn operator" type="button" name="+" id="+">+</button>
+        </div>
+        <div>
+            <button class="btn" type="button" value="=" id="eql-btn">=</button>
+        </div>
+        <div>
+            <button class="btn number" type="button" name="." id="dec-btn">.</button>
+        </div>
+        <div>
+            <button class="btn number" type="button" name="0" id="0">0</button>
+        </div>
       </div>
     </section>
 

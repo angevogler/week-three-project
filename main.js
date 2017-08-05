@@ -1,5 +1,4 @@
 // select elements
-
 // results screen
 const view = document.querySelector("#answers");
 // all buttons
@@ -8,6 +7,8 @@ const buttons = document.querySelectorAll(".btn");
 const numButtons = document.querySelectorAll(".number");
 // operator buttons
 const opButtons = document.querySelectorAll(".operator");
+// decimal button
+const decButton = document.querySelector("#dec-btn");
 // equal button
 const eqlButton = document.querySelector("#eql-btn");
 // clear button
@@ -19,65 +20,107 @@ let calculation = [];
 
 // define functions for operator buttons
 let operators = {
-  '+': function (a, b) {
+  'addition': function (a, b) {
     return (a + b);
   },
-  '-': function (a, b) {
+  'subtract': function (a, b) {
     return (a - b);
   },
-  '*': function (a, b) {
+  'multiply': function (a, b) {
     return (a * b);
   },
-  '/': function (a, b) {
+  "divide": function (a, b) {
     return (a/b);
   }
 };
 
 // event listener for number buttons
-// iterate over every number button to set each button to its own index
 for (let i = 0; i < numButtons.length; i++) {
-  //assign variable to store each number button index
   let buttonVal = numButtons[i];
-  // add event listener to each index
   buttonVal.addEventListener("click", function() {
-    // store the actual number that should be appearing
+    if ((view.textContent === "0") || (view.textContent === answer(calculation))) {
+      view.textContent = "";
+    }
     let content = buttonVal.innerText;
-    // display the content in the viewer
     view.textContent += content;
-    number += content;
+    number = content;
     console.log(number);
-    return number;
+    calculation.push(parseFloat(number));
   })
 };
-calculation.push(Number(number));
 
 // event listeners for operator buttons
-// iterate over every operator button to set each button to its own index
 for (let i = 0; i < opButtons.length; i++) {
-  // assign variable to store each operator button index
   let buttonVal = opButtons[i];
-  // add event listener to each index
   buttonVal.addEventListener("click", function(){
-    // store the actual character that should be appearing
     let content = buttonVal.innerText;
-    // display the content in the viewer
     view.textContent += content;
-    number += content;
+    number = content;
     console.log(number);
-    return number;
+    calculation.push(number);
   })
 };
+calculation.push(number);
+
+// event listener for decimal button
+decButton.addEventListener("click", function() {
+  let content = decButton.innerText;
+  view.textContent = content;
+  number = content;
+  console.log(number);
+  calculation.push(number);
+})
+
+function answer (calculation) {
+  let a = 0;
+  let b = 0;
+  let numValue = "";
+  let operation = "";
+  // create a for loop to loop through each index of calculation
+  // need to parse through array and assign variables to the numerical values
+  //and functions to the operators
+  for (let i = 0; i < calculation.length; i++) {
+    if ((calculation[i] >=0) && (calculation[i] < 10)) {
+      // concatenate digits into variables
+      numValue += calculation[i];
+    } else {
+      a = Number(numValue);
+      numValue = "";
+      operation = calculation[i];
+    }
+  }
+  b = Number(numValue);
+
+  if (operation === "+") {
+    // call + function from operators object
+    return operators.addition(a, b);
+  } else if (operation === "-") {
+    // call + function from operators object
+    return operators.subtract(a, b);
+  } else if (operation === "x") {
+    // call * function from operators object
+    return operators.multiply(a, b);
+  } else if (operation === "/") {
+    // call / function from operators object
+    return operators.divide(a, b);
+  } else {
+    return "error";
+  }
+}
 
 // event listener for equal button
 eqlButton.addEventListener("click", function() {
-  let content = eqlButton.innerText;
+  console.log(calculation);
+  let content = answer(calculation);
   view.textContent = content;
+  number = "";
+  calculation = [];
 })
 
 // event listener for clear button
 clrButton.addEventListener("click", function() {
-  // if the clear button is clicked
-  // display the value zero and clear every other value
   let content = 0;
   view.textContent = content;
+  number = "";
+  calculation = [];
 });

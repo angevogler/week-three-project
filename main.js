@@ -38,7 +38,7 @@ let operators = {
 for (let i = 0; i < numButtons.length; i++) {
   let buttonVal = numButtons[i];
   buttonVal.addEventListener("click", function() {
-    if ((view.textContent === "0") || (view.textContent === answer(calculation))) {
+    if ((view.textContent === "0") || (view.textContent === answer(calculation)) || (number === "")) {
       view.textContent = "";
     }
     let content = buttonVal.innerText;

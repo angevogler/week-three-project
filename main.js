@@ -31,6 +31,12 @@ let operators = {
   },
   "divide": function (a, b) {
     return (a/b);
+  },
+  "modulo": function (a, b) {
+    return (a%b);
+  },
+  "sqrt": function (a) {
+    return Math.sqrt(a);
   }
 };
 
@@ -49,6 +55,15 @@ for (let i = 0; i < numButtons.length; i++) {
   })
 };
 
+// event listener for decimal button
+decButton.addEventListener("click", function() {
+  let content = decButton.innerText;
+  view.textContent += content;
+  number = content;
+  console.log(number);
+  calculation.push(number);
+})
+
 // event listeners for operator buttons
 for (let i = 0; i < opButtons.length; i++) {
   let buttonVal = opButtons[i];
@@ -62,15 +77,6 @@ for (let i = 0; i < opButtons.length; i++) {
 };
 calculation.push(number);
 
-// event listener for decimal button
-decButton.addEventListener("click", function() {
-  let content = decButton.innerText;
-  view.textContent = content;
-  number = content;
-  console.log(number);
-  calculation.push(number);
-})
-
 function answer (calculation) {
   let a = 0;
   let b = 0;
@@ -80,20 +86,24 @@ function answer (calculation) {
   // need to parse through array and assign variables to the numerical values
   //and functions to the operators
   for (let i = 0; i < calculation.length; i++) {
-    if ((calculation[i] >=0) && (calculation[i] < 10)) {
+    if ((calculation[i] >=0) && (calculation[i] < 10) || (calculation[i] === '.')) {
       // concatenate digits into variables
       numValue += calculation[i];
     } else {
+      // switch digits from strings to numbers
       a = Number(numValue);
+      // empty the numValue string
       numValue = "";
+      // put operator into string
       operation = calculation[i];
     }
   }
+  // switch digits from strings to numbers
   b = Number(numValue);
 
   if (operation === "+") {
     // call + function from operators object
-    return operators.addition(a, b);
+    return (operators.addition(a, b).toPrecision(3));
   } else if (operation === "-") {
     // call + function from operators object
     return operators.subtract(a, b);
@@ -103,6 +113,12 @@ function answer (calculation) {
   } else if (operation === "/") {
     // call / function from operators object
     return operators.divide(a, b);
+  } else if (operation === "%") {
+    // call % function
+    return operators.modulo(a, b);
+  } else if (operation === "sqrt") {
+    // call sqrt function
+    return operators.sqrt(a);
   } else {
     return "error";
   }

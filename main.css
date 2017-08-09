@@ -44,6 +44,13 @@ button {
   color: 	#F5FFFA;
 }
 
+.hard-mode {
+  background-color: #F08080;
+  color: 	#F5FFFA;
+  width: 220px;
+  height: 100px;
+}
+
 #dec-btn {
   background-color: #E0FFFF;
 }

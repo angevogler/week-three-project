@@ -17,7 +17,7 @@ const clrButton = document.querySelector("#clr-btn");
 //declare other variables
 let number = "";
 let calculation = [];
-let pemdasVal;
+let pemdasVal = 0;
 
 
 // define functions for operator buttons
@@ -212,8 +212,7 @@ eqlButton.addEventListener("click", function() {
     }
   } // closes if statement for + and -
 } // closes out for loop
-  let content = pemdasVal;
-  view.textContent = content;
+  view.textContent = pemdasVal;
   number = "";
   calculation = [];
 })
